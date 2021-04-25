@@ -1,0 +1,13 @@
+package com.cg.nsa.service;
+
+import com.cg.nsa.entity.Student;
+
+public class StudentServiceImpl implements IStudentService {
+
+	@Override
+	public Student getStudentById(int studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
