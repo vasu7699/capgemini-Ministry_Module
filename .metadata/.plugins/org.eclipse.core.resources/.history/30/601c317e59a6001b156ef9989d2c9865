@@ -1,0 +1,49 @@
+	package com.cg.nsa.service;
+	import java.util.List;
+	import java.util.Optional;
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.stereotype.Service;
+	import com.cg.nsa.entity.Scholarship;
+	import com.cg.nsa.repository.IScholarshipRepository;
+
+	/*************************************************************************
+	 * 
+	 * @author VASUPRADHA S,AKITHA JHA
+	 * Version: 1.0
+	 * Description: Service Interface of Scholarship Module 
+	 * Date: 22-04-2021
+	 *
+	 *************************************************************************/
+	
+	@Service
+	public class ScholarshipServiceImpl implements IScholarshipService{
+		@Autowired
+		IScholarshipRepository iScholarshipRepository;
+		
+		/*************************************************************************
+		 * 
+		 * @author VASUPRADHA
+		 * Description: Returns Scholarship from scholarshipId
+		 * @param scholarshipId
+		 * @return Scholarship object
+		 * 
+		 *************************************************************************/
+		
+		@Override
+		public Optional<Scholarship> getById(int scholarshipId) {
+			return iScholarshipRepository.findById(scholarshipId);
+		}
+
+		/*************************************************************************
+		 * 
+		 * @author ANKITHA JHA
+		 * Description: Get all Scholarship Details
+		 * @return This method returns a list of all scholarships
+		 * 
+		 *************************************************************************/
+
+		@Override
+		public List<Scholarship> getAllScholarships() {
+			return iScholarshipRepository.findAll();
+		}
+	}

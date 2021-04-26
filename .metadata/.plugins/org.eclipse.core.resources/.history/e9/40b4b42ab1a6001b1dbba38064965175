@@ -1,0 +1,105 @@
+package com.cg.nsa;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cg.nsa.entity.Ministry;
+import com.cg.nsa.entity.Scholarship;
+import com.cg.nsa.entity.Student;
+import com.cg.nsa.exception.IdNotFoundException;
+import com.cg.nsa.exception.UserIdAlreadyFoundException;
+import com.cg.nsa.exception.ValidationException;
+import com.cg.nsa.service.IMinistryService;
+import com.cg.nsa.service.IScholarshipService;
+import com.cg.nsa.service.IStudentService;
+
+@SpringBootTest
+class NationalScholarshipAppApplicationTests {
+	
+	@Autowired
+	IMinistryService iMinistryService;
+	@Autowired
+	IScholarshipService iScholarshipService;
+	@Autowired
+	IStudentService iStudentService;
+	
+	@Test
+	void testaddMinistry(){
+		Ministry ministry=new Ministry("17","dhwe","ministry","Cultural");
+		assertEquals(ministry,iMinistryService.addMinistry(ministry));
+	}
+	
+	@Test
+	void testaddException() {
+		Ministry ministry=new Ministry("10","asdfg","ministry","Education");
+		assertThrows(UserIdAlreadyFoundException.class,()->iMinistryService.addMinistry(ministry));
+	}
+	
+	@Test
+	void grantScholarship() {
+		Scholarship scholarship= iScholarshipService.getById(101).orElse(null);
+		Student student= iStudentService.findByStudentId(184);
+		assertEquals(scholarship,iMinistryService.grant(scholarship, student));
+		
+	}
+	
+	@Test
+	void grantScholarshipPending() {
+		Scholarship scholarship= iScholarshipService.getById(101).orElse(null);
+		Student student= iStudentService.findByStudentId(166);
+		assertEquals(null,iMinistryService.grant(scholarship, student));
+		
+	}
+	
+	@Test
+	void grantScholarshipApproval() {
+		Scholarship scholarship= iScholarshipService.getById(102).orElse(null);
+		Student student= iStudentService.findByStudentId(136);
+		assertEquals(null,iMinistryService.grant(scholarship, student));
+		
+	}
+	
+	@Test
+	void grantScholshipExcseption() {
+		Scholarship scholarship= iScholarshipService.getById(101).orElse(null);
+		Student student= iStudentService.findByStudentId(400);
+		assertThrows(IdNotFoundException.class,()->iMinistryService.grant(scholarship, student));
+	}
+	
+	
+	@Test
+	void getAll() {
+		List<Ministry> actualList=iMinistryService.getAll();
+		List<String> s=new ArrayList<String>();
+		s.add("10");
+		s.add("11");
+		s.add("16");
+		s.add("15");
+		s.add("21");
+		s.add("17");
+		
+		int flag=0;
+		for(Ministry m:actualList) {
+			
+			if(s.contains(m.getUserId())) {
+				
+			}
+			else {
+				flag=1;
+			}	
+		}
+		if(flag==0) {
+			assertEquals(flag,0);
+		}
+			
+	}
+	
+
+
+}

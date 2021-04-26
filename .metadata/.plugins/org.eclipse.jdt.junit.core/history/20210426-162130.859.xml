@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="NationalScholarshipAppApplicationTests" project="NationalScholarshipApp" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.cg.nsa.NationalScholarshipAppApplicationTests" time="1.469" displayname="NationalScholarshipAppApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]">
+    <testcase name="testaddException" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="1.177" displayname="testaddException()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:testaddException()]"/>
+    <testcase name="getAll" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.018" displayname="getAll()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:getAll()]"/>
+    <testcase name="testaddMinistry" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.274" displayname="testaddMinistry()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:testaddMinistry()]"/>
+  </testsuite>
+</testrun>

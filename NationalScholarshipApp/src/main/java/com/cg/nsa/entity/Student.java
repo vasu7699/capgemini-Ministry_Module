@@ -2,45 +2,38 @@ package com.cg.nsa.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.context.annotation.Description;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-/*********************
+/****************************************************************************
  * 
  * @author Sneha.M.J
  * Version: 1.0
  * Description: This is the Student Entity Class
  * Created date: 20-04-2021
  * 
- **********************/
+ ****************************************************************************/
 
 @Entity
 @Table(name="student10")
 @PrimaryKeyJoinColumn(name="userId")  
 public class Student extends User 
 {
-	//@Id
 	@Column(name = "studentId")
 	@Range(min = 1,max =200)
-//	@SequenceGenerator(name="myStudent",sequenceName = "myStudentSequence",initialValue = 1,allocationSize = 10)
-//	@GeneratedValue(generator = "myStudent")
 	private int studentId;
 	
 	@Column(name = "fullName")
@@ -79,19 +72,54 @@ public class Student extends User
 	@Size(min = 12,max=12,message = "Aadhar no should consist of 12 digits")
 	private String aadhar;
 	
+	@Column(name = "field")
+	@NotEmpty(message="Field cannot be empty")
 	private String field;		// Medical, Law, Engineering
+	
+	@Column(name = "course")
+	@NotEmpty(message="Course cannot be empty")
 	private String course;		// LLB, MBA, MBBS, BE, BTech, MTech, BCA
+	
+	@Column(name = "courseYear")
+	@Range(min=1,max=4)
 	private int courseYear;		// Current course year
+	
+	@Column(name = "sscScore")
+	@Range(min = (long) 0.0,max = (long) 100.0, message = "Ssc score should be between 0 and 100")
 	private double sscScore;
+	
+	@Column(name = "hscScore")
+	@Range(min = (long) 0.0,max = (long) 100.0, message = "Hsc score should be between 0 and 100")
 	private double hscScore;
+	
+	@Column(name = "familyIncome")
 	private double familyIncome;
+	
+	@Column(name = "bankName")
+	@NotEmpty(message="Bank Name cannot be empty")
 	private String bankName;
+	
+	@Column(name = "bankIfsc")
+	@NotEmpty(message="Ifsc Code cannot be empty")
+	@Size(min = 11,max=11,message = "Ifsc Code should consist of 11 digits")
 	private String bankIfsc;
+	
+	@Column(name = "accountNo")
+	@NotEmpty(message="Account No cannot be empty")
 	private String accountNo;
+	
+	@Column(name = "appStatus")
 	private String appStatus;		// Pending/Approved/Rejected
+	
+	@Column(name = "approval")
 	private String approval;		// Pending/Granted
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "institutionUserId")
+	private Institution institution;
+
 	
+		
 	public Student(String userId, String password, String role, @Range(min = 1, max = 200) int studentId,
 			@NotEmpty(message = "Full Name cannot be empty") String fullName, @Past LocalDate birthdate,
 			@NotEmpty(message = "Gender cannot be empty") String gender,
@@ -101,7 +129,7 @@ public class Student extends User
 			@NotEmpty(message = "City cannot be empty") String city,
 			@NotEmpty(message = "AAdhar cannot be empty") @Size(min = 12, max = 12, message = "Aadhar no should consist of 12 digits") String aadhar,
 			String field, String course, int courseYear, double sscScore, double hscScore, double familyIncome,
-			String bankName, String bankIfsc, String accountNo, String appStatus, String approval) {
+			String bankName, String bankIfsc, String accountNo) {
 		super(userId, password, role);
 		this.studentId = studentId;
 		this.fullName = fullName;
@@ -121,218 +149,188 @@ public class Student extends User
 		this.bankName = bankName;
 		this.bankIfsc = bankIfsc;
 		this.accountNo = accountNo;
-		this.appStatus = appStatus;
-		this.approval = approval;
 	}
-
 
 	public Student(String userId, String password, String role) {
 		super(userId, password, role);
 	}
-	
-	public Student() {
-		super();
-	}
 
+	public Student() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 
 	public int getStudentId() {
 		return studentId;
 	}
 
-
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-
 
 	public String getFullName() {
 		return fullName;
 	}
 
-
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-
 
 	public LocalDate getBirthdate() {
 		return birthdate;
 	}
 
-
 	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
-
 
 	public String getGender() {
 		return gender;
 	}
 
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 
 	public String getMobile() {
 		return mobile;
 	}
 
-
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getAddress() {
 		return address;
 	}
 
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 	public String getCity() {
 		return city;
 	}
 
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
 
 	public String getAadhar() {
 		return aadhar;
 	}
 
-
 	public void setAadhar(String aadhar) {
 		this.aadhar = aadhar;
 	}
-
 
 	public String getField() {
 		return field;
 	}
 
-
 	public void setField(String field) {
 		this.field = field;
 	}
-
 
 	public String getCourse() {
 		return course;
 	}
 
-
 	public void setCourse(String course) {
 		this.course = course;
 	}
-
 
 	public int getCourseYear() {
 		return courseYear;
 	}
 
-
 	public void setCourseYear(int courseYear) {
 		this.courseYear = courseYear;
 	}
-
 
 	public double getSscScore() {
 		return sscScore;
 	}
 
-
 	public void setSscScore(double sscScore) {
 		this.sscScore = sscScore;
 	}
-
 
 	public double getHscScore() {
 		return hscScore;
 	}
 
-
 	public void setHscScore(double hscScore) {
 		this.hscScore = hscScore;
 	}
-
 
 	public double getFamilyIncome() {
 		return familyIncome;
 	}
 
-
 	public void setFamilyIncome(double familyIncome) {
 		this.familyIncome = familyIncome;
 	}
-
 
 	public String getBankName() {
 		return bankName;
 	}
 
-
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
-
 
 	public String getBankIfsc() {
 		return bankIfsc;
 	}
 
-
 	public void setBankIfsc(String bankIfsc) {
 		this.bankIfsc = bankIfsc;
 	}
-
 
 	public String getAccountNo() {
 		return accountNo;
 	}
 
-
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 
-
-	public String getAppStatus() {
+	public String findAppStatus() {
 		return appStatus;
 	}
 
-
-	public void setAppStatus(String appStatus) {
+	public void updateAppStatus(String appStatus) {
 		this.appStatus = appStatus;
 	}
 
-
-	public String getApproval() {
+	public String findApproval() {
 		return approval;
 	}
 
-
-	public void setApproval(String approval) {
+	public void updateApproval(String approval) {
 		this.approval = approval;
 	}
+
+	
+	public void updateInstitution(Institution institution) {
+		this.institution = institution;
+	}
+
+	public Institution findInstitutionDetails(Institution institution) {
+		return institution;
+	}
+
 
 
 	@Override
@@ -342,8 +340,9 @@ public class Student extends User
 				+ ", aadhar=" + aadhar + ", field=" + field + ", course=" + course + ", courseYear=" + courseYear
 				+ ", sscScore=" + sscScore + ", hscScore=" + hscScore + ", familyIncome=" + familyIncome + ", bankName="
 				+ bankName + ", bankIfsc=" + bankIfsc + ", accountNo=" + accountNo + ", appStatus=" + appStatus
-				+ ", approval=" + approval + "]";
+				+ ", approval=" + approval + ", institution=" + institution + "]";
 	}
+
 
 
 	@Override
@@ -370,12 +369,14 @@ public class Student extends User
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		temp = Double.doubleToLongBits(hscScore);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((institution == null) ? 0 : institution.hashCode());
 		result = prime * result + ((mobile == null) ? 0 : mobile.hashCode());
 		temp = Double.doubleToLongBits(sscScore);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + studentId;
 		return result;
 	}
+
 
 
 	@Override
@@ -463,6 +464,11 @@ public class Student extends User
 			return false;
 		if (Double.doubleToLongBits(hscScore) != Double.doubleToLongBits(other.hscScore))
 			return false;
+		if (institution == null) {
+			if (other.institution != null)
+				return false;
+		} else if (!institution.equals(other.institution))
+			return false;
 		if (mobile == null) {
 			if (other.mobile != null)
 				return false;
@@ -473,10 +479,6 @@ public class Student extends User
 		if (studentId != other.studentId)
 			return false;
 		return true;
-	}
-
-	
-	
-	
+	}	
 	
 }

@@ -2,4 +2,16 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.entity.Student"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.service.IMinistryService"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.service.IScholarshipService"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.entity.Scholarship"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.entity.Ministry"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.exception.ValidationException"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.exception.UserIdAlreadyFoundException"/>
+    <fullyQualifiedTypeName name="com.cg.nsa.exception.IdNotFoundException"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

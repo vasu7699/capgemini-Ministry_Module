@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="NationalScholarshipAppApplicationTests" project="NationalScholarshipApp" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.cg.nsa.NationalScholarshipAppApplicationTests" time="1.425" displayname="NationalScholarshipAppApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]">
+    <testcase name="testaddException" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.899" displayname="testaddException()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:testaddException()]"/>
+    <testcase name="getAll" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.018" displayname="getAll()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:getAll()]"/>
+    <testcase name="testaddMinistry" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.184" displayname="testaddMinistry()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:testaddMinistry()]"/>
+    <testcase name="grantScholarshipApproval" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.225" displayname="grantScholarshipApproval()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:grantScholarshipApproval()]"/>
+    <testcase name="grantScholarship" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.049" displayname="grantScholarship()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:grantScholarship()]"/>
+    <testcase name="grantScholarshipPending" classname="com.cg.nsa.NationalScholarshipAppApplicationTests" time="0.05" displayname="grantScholarshipPending()" uniqueid="[engine:junit-jupiter]/[class:com.cg.nsa.NationalScholarshipAppApplicationTests]/[method:grantScholarshipPending()]"/>
+  </testsuite>
+</testrun>
